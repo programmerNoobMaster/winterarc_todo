@@ -6,9 +6,13 @@ function App() {
   const [tasks, setTasks] = useState([]);
 
   let onChangeHandler = (event) => {
-    console.log(task);
-    setTasks([...tasks, task]);
-    setTask("");
+    if (task === "") {
+      return;
+    } else {
+      console.log(task);
+      setTasks([...tasks, task]);
+      setTask("");
+    }
   };
 
   let onCheckHandler = (event) => {
@@ -26,6 +30,7 @@ function App() {
     <>
       <div className="create">
         <input
+          className="inputObject"
           placeholder="Enter your task"
           value={task}
           onChange={(e) => setTask(e.target.value)}
@@ -35,8 +40,9 @@ function App() {
             }
           }}
         ></input>
-        <button onClick={onChangeHandler}>Enter</button>
-        <button onClick={onCheckHandler}>yoho</button>
+        <button className="enter" onClick={onChangeHandler}>
+          +
+        </button>
       </div>
       <div>
         <ui>
